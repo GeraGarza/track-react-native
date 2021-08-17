@@ -13,6 +13,7 @@ import { setNavigator } from "./src/navigationRef";
 import InitialScreen from "./src/screens/InitialScreen";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Provider as LocationProvider } from "./src/context/LocationContext";
+import { Provider as TrackProvider } from "./src/context/TrackContext";
 
 const switchNavigator = createSwitchNavigator({
   Initial: InitialScreen,
@@ -35,15 +36,17 @@ const App = createAppContainer(switchNavigator);
 export default () => {
   return (
     <AuthProvider>
-      <LocationProvider>
-        <SafeAreaProvider>
-          <App
-            ref={(navigator) => {
-              setNavigator(navigator);
-            }}
-          />
-        </SafeAreaProvider>
-      </LocationProvider>
+      <TrackProvider>
+        <LocationProvider>
+          <SafeAreaProvider>
+            <App
+              ref={(navigator) => {
+                setNavigator(navigator);
+              }}
+            />
+          </SafeAreaProvider>
+        </LocationProvider>
+      </TrackProvider>
     </AuthProvider>
   );
 };

@@ -22,7 +22,6 @@ module.exports = (req, res, next) => {
 
     const user = await User.findById(userId);
     req.user = user;
-
     next();
   });
 };

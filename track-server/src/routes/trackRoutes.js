@@ -15,6 +15,7 @@ router.get("/tracks", async (req, res) => {
 
 router.post("/tracks", async (req, res) => {
   const { name, locations } = req.body;
+  console.log(`New Track: ${name}`);
   if (!name || !locations) {
     return res.status(422).send({ error: "Must provide name and location" });
   }
